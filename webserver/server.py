@@ -69,7 +69,7 @@ def before_request():
     import traceback; traceback.print_exc()
     g.conn = None
 
-
+'''
 @app.teardown_request
 def teardown_request(exception):
   """
@@ -80,7 +80,7 @@ def teardown_request(exception):
     g.conn.close()
   except Exception as e:
     pass
-
+'''
 
 #
 # @app.route is a decorator around index() that means:
