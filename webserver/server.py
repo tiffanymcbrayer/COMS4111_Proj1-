@@ -66,7 +66,7 @@ def before_request():
   try:
     g.conn = engine.connect()
   except:
-    print ("uh oh, problem connecting to database")
+    print("uh oh, problem connecting to database")
     import traceback; traceback.print_exc()
     g.conn = None
 
@@ -79,8 +79,8 @@ def teardown_request(exception):
   try:
     g.conn.close()
   except Exception as e:
-      print("here with the exception")
-      pass
+    print("here with the exception")
+    pass
 
 
 #
@@ -107,8 +107,7 @@ def index():
   """
 
   # DEBUG: this is debugging code to see what request looks like
-  print (request.args)
-
+  print(request.args)
 
   #
   # example of a database query
