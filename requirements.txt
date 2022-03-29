@@ -1,2 +1,3 @@
 sqlalchemy
-ipython-sql 
+ipython-sql
+psycopg2 
