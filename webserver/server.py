@@ -18,6 +18,8 @@ from flask import Flask, request, render_template, g, redirect, Response
 tmpl_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
 app = Flask(__name__, template_folder=tmpl_dir)
 
+
+
 # XXX: The Database URI should be in the format of: 
 #
 #     postgresql://USER:PASSWORD@<IP_OF_POSTGRE_SQL_SERVER>/<DB_NAME>
@@ -34,8 +36,8 @@ DB_PASSWORD = "cocoa?"
 
 DB_SERVER = "w4111.cisxo09blonu.us-east-1.rds.amazonaws.com"
 
-DATABASEURI = "postgresql://"+DB_USER+":"+DB_PASSWORD+"@"+DB_SERVER+"/w4111"
-##DATABASEURI = "postgresql://ttm2126:cocoa?@w4111.cisxo09blonu.us-east-1.rds.amazonaws.com/proj1part2"
+DATABASEURI = "postgresql://"+DB_USER+":"+DB_PASSWORD+"@"+DB_SERVER+"/proj1part2"
+
 
 #
 # This line creates a database engine that knows how to connect to the URI above
@@ -44,13 +46,12 @@ engine = create_engine(DATABASEURI)
 
 
 # Here we create a test table and insert some values in it
-
-#engine.execute("""DROP TABLE IF EXISTS test;""")
-#engine.execute("""CREATE TABLE IF NOT EXISTS test (
-#  id serial,
-#  name text
-#);""")
-#engine.execute("""INSERT INTO test(name) VALUES ('grace hopper'), ('alan turing'), ('ada lovelace');""")
+engine.execute("""DROP TABLE IF EXISTS test;""")
+engine.execute("""CREATE TABLE IF NOT EXISTS test (
+  id serial,
+  name text
+);""")
+engine.execute("""INSERT INTO test(name) VALUES ('grace hopper'), ('alan turing'), ('ada lovelace');""")
 
 
 
@@ -68,7 +69,6 @@ def before_request():
     print("uh oh, problem connecting to database")
     import traceback; traceback.print_exc()
     g.conn = None
-
 
 @app.teardown_request
 def teardown_request(exception):
@@ -107,6 +107,7 @@ def index():
 
   # DEBUG: this is debugging code to see what request looks like
   print(request.args)
+
 
   #
   # example of a database query
