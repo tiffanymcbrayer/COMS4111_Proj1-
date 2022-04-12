@@ -90,7 +90,6 @@ def index():
   cursor = g.conn.execute("SELECT name FROM test")
   places = g.conn.execute("SELECT name,placeID FROM place")
   names = []
-  placeIDs = []
   # should look like {{}}
 
   collective = []
@@ -102,14 +101,11 @@ def index():
     collective.append(entry)
 
     names.append(result[0])  # can also be accessed using result[0]
-    placeIDs.append(result[1])  # can also be accessed using result[0]
   cursor.close()
   # now i should make a dictionary that has both name and ID in the same dictionary
-  allData = dict(namesList = names)
-  otherData = dict(IDlist = placeIDs)
+  #allData = dict(namesList = names)
   coll = dict(data = collective)
-  print(allData)
-
+  print(coll)
   
 
   
