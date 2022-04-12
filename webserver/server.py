@@ -10,7 +10,6 @@ A debugger such as "pdb" may be helpful for debugging.
 Read about it online.
 """
 
-from importlib.metadata import EntryPoints
 import os
 from sqlalchemy import *
 from sqlalchemy.pool import NullPool
