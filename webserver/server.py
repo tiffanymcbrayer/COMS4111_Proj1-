@@ -96,7 +96,7 @@ def index():
     placeIDs.append(result[1])  # can also be accessed using result[0]
   cursor.close()
   names = dict(data = names)
-  placeIDs = dict(data = names)
+  placeIDs = dict(data2 = names)
   
   return render_template("welcome.html", **names, **placeIDs)
 
