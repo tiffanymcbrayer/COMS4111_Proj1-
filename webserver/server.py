@@ -96,10 +96,10 @@ def index():
     names.append(result[0])  # can also be accessed using result[0]
     placeIDs.append(result[1])  # can also be accessed using result[0]
   cursor.close()
-  names = dict(data = names)
-  print(names)
+  allData = dict(namesList = names)
+  print(allData)
   
-  return render_template("welcome.html", **names, **placeIDs)
+  return render_template("welcome.html", **allData)
 
 
 @app.route('/form')
