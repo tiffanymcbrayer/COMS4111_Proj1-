@@ -92,6 +92,7 @@ def index():
   names = []
   placeIDs = []
   for result in places:
+    print(result)
     names.append(result['name'])  # can also be accessed using result[0]
     placeIDs.append(result['placeID'])  # can also be accessed using result[0]
   cursor.close()
