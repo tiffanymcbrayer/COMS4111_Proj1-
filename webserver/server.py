@@ -87,7 +87,7 @@ def teardown_request(exception):
 @app.route('/')
 def index():
   print(request.args)
-  cursor = g.conn.execute("SELECT name FROM place")
+  cursor = g.conn.execute("SELECT name FROM test")
   names = []
   for result in cursor:
     names.append(result['name'])  # can also be accessed using result[0]
