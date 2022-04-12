@@ -40,6 +40,9 @@ engine.execute("""CREATE TABLE IF NOT EXISTS test (
   name text
 );""")
 engine.execute("""INSERT INTO test(name) VALUES ('grace hopper'), ('alan turing'), ('ada lovelace');""")
+table = engine.execute("""
+  SELECT * FROM place
+""")
 
 
 
@@ -100,7 +103,7 @@ def index():
   #
   # example of a database query
   #
-  cursor = g.conn.execute("SELECT name FROM test")
+  cursor = g.conn.execute("SELECT name FROM place")
   names = []
   for result in cursor:
     names.append(result['name'])  # can also be accessed using result[0]
@@ -137,10 +140,10 @@ def index():
 
   #
   # render_template looks in the templates/ folder for files.
-  # for example, the below file reads template/index.html
+  # for example, thebelow file reads template/index.html
   #
-  return render_template("index.html", **context)
-
+  #return render_template("index.html", **context)
+  return render_template("welcome.html", **context)
 #
 # This is an example of a different path.  You can see it at
 # 
@@ -149,6 +152,11 @@ def index():
 # notice that the functio name is another() rather than index()
 # the functions for each app.route needs to have different names
 #
+
+
+@app.route('/form')
+def addPage():
+    return render_template('form.html')
 
 
 
