@@ -153,14 +153,12 @@ def index():
 
 @app.route('/')
 def welcome():
-    
-
     return render_template('welcome.html') 
 
 
 @app.route('/another')
 def another():
-  return render_template("anotherfile.html")
+  return render_template("welcome.html")
 
 
 # Example of adding new data to the database
