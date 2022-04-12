@@ -91,11 +91,13 @@ def index():
   places = g.conn.execute("SELECT name,placeID FROM place")
   names = []
   placeIDs = []
+  # should look like {{}}
   for result in places:
     names.append(result[0])  # can also be accessed using result[0]
     placeIDs.append(result[1])  # can also be accessed using result[0]
   cursor.close()
-  #names = dict(data = names)
+  names = dict(data = names)
+  print(names)
   
   return render_template("welcome.html", **names, **placeIDs)
 
