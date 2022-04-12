@@ -92,13 +92,13 @@ def index():
   names = []
   # should look like {{}}
 
-  collective = []
+  collective = {}
   for result in places:
     entry = {
       "name" : result[0],
       "placeID": result[1]
     }
-    collective.append(entry)
+    collective[result[1]]=entry
 
     names.append(result[0])  # can also be accessed using result[0]
   cursor.close()
