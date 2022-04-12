@@ -149,6 +149,15 @@ def index():
 # notice that the functio name is another() rather than index()
 # the functions for each app.route needs to have different names
 #
+
+
+@app.route('/')
+def welcome():
+    
+
+    return render_template('welcome.html') 
+
+
 @app.route('/another')
 def another():
   return render_template("anotherfile.html")
