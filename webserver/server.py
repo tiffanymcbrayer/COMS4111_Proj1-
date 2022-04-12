@@ -151,9 +151,6 @@ def index():
 #
 
 
-@app.route('/')
-def welcome():
-    return render_template('welcome.html') 
 
 
 @app.route('/another')
