@@ -10,6 +10,7 @@ A debugger such as "pdb" may be helpful for debugging.
 Read about it online.
 """
 
+from importlib.metadata import EntryPoints
 import os
 from sqlalchemy import *
 from sqlalchemy.pool import NullPool
@@ -92,15 +93,27 @@ def index():
   names = []
   placeIDs = []
   # should look like {{}}
+
+  collective = {}
   for result in places:
+    entry = {
+      "name" : result[0],
+      "placeID": result[1]
+    }
+    collective[result[1]] = entry
+
     names.append(result[0])  # can also be accessed using result[0]
     placeIDs.append(result[1])  # can also be accessed using result[0]
   cursor.close()
+  # now i should make a dictionary that has both name and ID in the same dictionary
   allData = dict(namesList = names)
   otherData = dict(IDlist = placeIDs)
   print(allData)
+
   
-  return render_template("welcome.html", **allData, **otherData)
+
+  
+  return render_template("welcome.html", **collective)
 
 
 @app.route('/form')
