@@ -80,7 +80,7 @@ def teardown_request(exception):
 #       @app.route("/foobar/", methods=["POST", "GET"])
 #
 # PROTIP: (the trailing / in the path is important)
-# 
+# [p]
 # see for routing: http://flask.pocoo.org/docs/0.10/quickstart/#routing
 # see for decorators: http://simeonfranklin.com/blog/2012/jul/1/python-decorators-in-12-steps/
 #
@@ -95,8 +95,7 @@ def index():
     names.append(result[0])  # can also be accessed using result[0]
     placeIDs.append(result[1])  # can also be accessed using result[0]
   cursor.close()
-  names = dict(data = names)
-  placeIDs = dict(data2 = names)
+  #names = dict(data = names)
   
   return render_template("welcome.html", **names, **placeIDs)
 
