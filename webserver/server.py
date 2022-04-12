@@ -92,14 +92,13 @@ def index():
   names = []
   placeIDs = []
   for result in places:
-    print(result)
     names.append(result[0])  # can also be accessed using result[0]
     placeIDs.append(result[1])  # can also be accessed using result[0]
   cursor.close()
   names = dict(data = names)
-  #context = dict(data = names)
+  placeIDs = dict(data = names)
   
-  return render_template("welcome.html", **names)
+  return render_template("welcome.html", **names, **placeIDs)
 
 
 @app.route('/form')
