@@ -88,6 +88,7 @@ def teardown_request(exception):
 def index():
   print(request.args)
   cursor = g.conn.execute("SELECT name FROM test")
+  places = g.conn.execute("SELECT name FROM place")
   names = []
   for result in cursor:
     names.append(result['name'])  # can also be accessed using result[0]
@@ -99,14 +100,13 @@ def index():
 
 @app.route('/form')
 def addPage():
-    return render_template('form.html')
+  return render_template('form.html')
 
     
 @app.route('/view/<id>')
 def view_name(id = None):
-    
 
-    return render_template('view.html')
+  return render_template('view.html')
 
 
 
