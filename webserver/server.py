@@ -93,13 +93,13 @@ def index():
   placeIDs = []
   # should look like {{}}
 
-  collective = {}
+  collective = []
   for result in places:
     entry = {
       "name" : result[0],
       "placeID": result[1]
     }
-    collective[result[1]] = entry
+    collective.append(entry)
 
     names.append(result[0])  # can also be accessed using result[0]
     placeIDs.append(result[1])  # can also be accessed using result[0]
@@ -107,12 +107,13 @@ def index():
   # now i should make a dictionary that has both name and ID in the same dictionary
   allData = dict(namesList = names)
   otherData = dict(IDlist = placeIDs)
+  coll = dict(data = collective)
   print(allData)
 
   
 
   
-  return render_template("welcome.html", **collective)
+  return render_template("welcome.html", **coll)
 
 
 @app.route('/form')
