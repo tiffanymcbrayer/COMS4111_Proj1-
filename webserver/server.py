@@ -90,7 +90,7 @@ def index():
   cursor = g.conn.execute("SELECT name FROM test")
   places = g.conn.execute("SELECT name FROM place")
   names = []
-  for result in cursor:
+  for result in places:
     names.append(result['name'])  # can also be accessed using result[0]
   cursor.close()
   context = dict(data = names)
