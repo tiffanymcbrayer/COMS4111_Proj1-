@@ -9,9 +9,24 @@
     <div class = "container">
 
         <div class = "row">
-            <div>
-                {{data}}
-            </div>
+            {% for placeID, name, picture, address, neighborhood, closestSubway in data %}
+                <div>
+                    <a href=/view/{{placeID}}>{{name}}</a>
+                </div>
+                <div>
+                    <img src={{picture}} width = 90%>
+                </div>
+                <div>
+                    {{address}}
+                </div>
+                <div>
+                    {{neighborhood}}
+                </div>
+                <div>
+                    {{closestSubway}}
+                </div>
+
+            {% endfor %}
 
         </div>
 </b>
