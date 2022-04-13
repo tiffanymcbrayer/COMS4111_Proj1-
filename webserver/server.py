@@ -91,9 +91,9 @@ def index():
     select place.placeID, place.name, place.picture, has.address, location.neighborhood, location.closestSubway
     from place, has, location
     where place.placeID = has.placeID and has.address = location.address
+    limit 3
   """)
 
-  # should look like {{}}
 
   collective = []
   for result in placeInfo:
