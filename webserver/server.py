@@ -107,11 +107,12 @@ def index():
   coll = dict(data = collective)
   print(coll)
 
-  col = {'data': {'data2': 5}}
+  col = {{1: {'name': 'The Happiest Hour', 'placeID': 1}}}
+  he = {1:{"id":"1", "name": "hello"}, 2:{"id":"2", "name": "letsss"}}
   
 
   
-  return render_template("welcome.html", **col)
+  return render_template("welcome.html", **he)
 
 
 @app.route('/form')
