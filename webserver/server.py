@@ -94,17 +94,13 @@ def index():
 
   collective = []
   for result in places:
-    entry = [result[0], result[1]]
+    entry = [result[0], result[1]] # name, placeID
     collective.append(entry)
     names.append(result[0])  # can also be accessed using result[0]
   cursor.close()
   coll = dict(data = collective)
   print(coll)
 
-  he = {"data": [[1, "hello"], [2,"hi"]]}
-
-  #he = {1:{"id":"1", "name": "hello"}, 2:{"id":"2", "name": "letsss"}}
-  
 
   
   return render_template("welcome.html", **coll)
