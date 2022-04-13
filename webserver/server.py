@@ -149,8 +149,8 @@ def add():
 
   user = request.form['user']
   print(user)
-  cmd = 'INSERT INTO users VALUES (:user1)'
-  g.conn.execute(text(cmd), user1 = user)
+  cmd = 'INSERT INTO users VALUES (:user1)';
+  g.conn.execute(text(cmd), user1 = user);
   return redirect('/')
 
 
