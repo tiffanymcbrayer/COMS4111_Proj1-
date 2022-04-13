@@ -143,7 +143,7 @@ def another():
 @app.route('/add', methods=['POST'])
 def add():
   user = request.form['name']
-  print(name)
+  print(user)
   cmd = 'INSERT INTO test(name) VALUES (:name1), (:name2)';
   g.conn.execute(text(cmd), name1 = user, name2 = user);
   return redirect('/')
