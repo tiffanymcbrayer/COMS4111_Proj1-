@@ -140,7 +140,7 @@ def another():
 
 
 # Example of adding new data to the database
-@app.route('/add', methods=['POST'])
+@app.route('/form', methods=['POST'])
 def add():
   # name = request.form['name']
   # print(name)
