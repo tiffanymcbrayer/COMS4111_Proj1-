@@ -106,10 +106,12 @@ def index():
   #allData = dict(namesList = names)
   coll = dict(data = collective)
   print(coll)
+
+  col = {'data': {'data2': 5}}
   
 
   
-  return render_template("welcome.html", **coll)
+  return render_template("welcome.html", **col)
 
 
 @app.route('/form')
