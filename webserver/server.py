@@ -89,12 +89,18 @@ def index():
   print(request.args)
   cursor = g.conn.execute("SELECT name FROM test")
   places = g.conn.execute("SELECT name,placeID FROM place")
+  placeInfo = g.conn.execute("""
+    select place.placeID, place.name, place.picture, has.address, location.neighborhood, location.closestSubway
+    from place, has, location
+    where place.placeID = has.placeID and has.address = location.address
+  """)
+
   names = []
   # should look like {{}}
 
   collective = []
-  for result in places:
-    entry = [result[0], result[1]] # name, placeID
+  for result in placeInfo:
+    entry = [result[0], result[1]] # placeID, name
     collective.append(entry)
     names.append(result[0])  # can also be accessed using result[0]
   cursor.close()
