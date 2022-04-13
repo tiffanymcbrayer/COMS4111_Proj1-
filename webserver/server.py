@@ -107,7 +107,9 @@ def index():
   coll = dict(data = collective)
   print(coll)
 
-  he = {1:{"id":"1", "name": "hello"}, 2:{"id":"2", "name": "letsss"}}
+  he = {"data": ["hello", "hi"]}
+
+  #he = {1:{"id":"1", "name": "hello"}, 2:{"id":"2", "name": "letsss"}}
   
 
   
