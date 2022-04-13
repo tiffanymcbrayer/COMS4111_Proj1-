@@ -95,14 +95,14 @@ def index():
     where place.placeID = has.placeID and has.address = location.address
   """)
 
-  names = []
   # should look like {{}}
 
   collective = []
   for result in placeInfo:
-    entry = [result[0], result[1]] # placeID, name
+    entry = [result[0], result[1], result[2], result[3], result[4], result[5]] 
+    # placeID, name, picture, address, neighborhood, closestSubway
+
     collective.append(entry)
-    names.append(result[0])  # can also be accessed using result[0]
   cursor.close()
   coll = dict(data = collective)
   print(coll)
