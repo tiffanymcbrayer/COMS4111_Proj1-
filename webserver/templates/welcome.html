@@ -13,10 +13,12 @@
         </div>
 
         <div>
-            {% for n,y in data %}
-            <div>n</div>
-            <a href=/view/{{n.1}}>{{n}}</a>
-            <a href=/view/{{n.placeID}}>{{n.place}}</a>
+            {% for n in data %}
+                {% for i in n %}
+                <div>n</div>
+                <a href=/view/{{n.1}}>{{n}}</a>
+                <a href=/view/{{n.placeID}}>{{n.place}}</a>
+                {% endfor %}
             {% endfor %}
           </div>
     </div>
