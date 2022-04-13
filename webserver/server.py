@@ -124,8 +124,6 @@ def view_name(id = None):
   """)
 
   for result in placeInfo:
-    print(id)
-    print(result[0])
     if int(result[0]) == int(id):
       entry = [result[0], result[1], result[2], result[3], result[4], result[5]] 
   coll = dict(data = entry)
@@ -144,10 +142,15 @@ def another():
 # Example of adding new data to the database
 @app.route('/add', methods=['POST'])
 def add():
-  name = request.form['name']
-  print(name)
-  cmd = 'INSERT INTO test(name) VALUES (:name1), (:name2)';
-  g.conn.execute(text(cmd), name1 = name, name2 = name);
+  # name = request.form['name']
+  # print(name)
+  # cmd = 'INSERT INTO test(name) VALUES (:name1), (:name2)';
+  # g.conn.execute(text(cmd), name1 = name, name2 = name);
+
+  user = request.form['user']
+  print(user)
+  cmd = 'INSERT INTO users VALUES (:user1)'
+  g.conn.execute(text(cmd), user1 = user)
   return redirect('/')
 
 
