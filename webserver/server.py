@@ -92,7 +92,7 @@ def index():
   names = []
   # should look like {{}}
 
-  collective = {}
+  collective = []
   for result in places:
     entry = [result[0], result[1]]
     collective.append(entry)
