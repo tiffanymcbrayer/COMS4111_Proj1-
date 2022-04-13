@@ -87,8 +87,6 @@ def teardown_request(exception):
 @app.route('/')
 def index():
   print(request.args)
-  cursor = g.conn.execute("SELECT name FROM test")
-  places = g.conn.execute("SELECT name,placeID FROM place")
   placeInfo = g.conn.execute("""
     select place.placeID, place.name, place.picture, has.address, location.neighborhood, location.closestSubway
     from place, has, location
@@ -103,7 +101,7 @@ def index():
     # placeID, name, picture, address, neighborhood, closestSubway
 
     collective.append(entry)
-  cursor.close()
+  placeInfo.close()
   coll = dict(data = collective)
   print(coll)
 
@@ -119,9 +117,20 @@ def addPage():
     
 @app.route('/view/<id>')
 def view_name(id = None):
-  
+  placeInfo = g.conn.execute("""
+    select place.placeID, place.name, place.picture, has.address, location.neighborhood, location.closestSubway
+    from place, has, location
+    where place.placeID = has.placeID and has.address = location.address
+  """)
 
-  return render_template('view.html')
+  for result in placeInfo:
+    if result[0] == id:
+      entry = [result[0], result[1], result[2], result[3], result[4], result[5]] 
+  coll = dict(data = entry)
+
+  placeInfo.close()
+
+  return render_template('view.html', **coll)
 
 
 
