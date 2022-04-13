@@ -13,9 +13,16 @@
         </div>
 
         <div>
+            {% for data2 in data %}
+                {% for n in data2 %}
+                <div> {{n}} </div>
+                {% endfor %}
+            {% endfor %}
+
+
             {% for n in data %}
             <div>{{n}}</div>
-            <a href=/view/{{n}}>{{n[place]}}</a>
+            <a href=/view/{{n}}>{{n}}</a>
             <!-- <a href=/view/{{n.placeID}}>{{n.place}}</a> -->
             {% endfor %}
           </div>
