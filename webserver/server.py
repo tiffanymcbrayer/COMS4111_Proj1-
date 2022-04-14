@@ -42,8 +42,8 @@ engine.execute("""CREATE TABLE IF NOT EXISTS test (
 engine.execute("""INSERT INTO test(name) VALUES ('grace hopper'), ('alan turing'), ('ada lovelace');""")
 
 
-userID = -1
-userIDdict = dict(userID = userID)
+userID_ = -1
+userIDdict = dict(userID = userID_)
 
 
 @app.before_request
@@ -102,7 +102,7 @@ def index():
 
 @app.route('/form')
 def addPage():
-  if userID == -1:
+  if userID_ == -1:
     return redirect('/login')
   else:
     return render_template('form.html', **userIDdict)
@@ -149,10 +149,13 @@ def login():
 @app.route('/addLogin', methods=['POST'])
 def addLogin():
   user = request.form['user']
+  userID = user
+  print(userID)
+  
   print(user)
   cmd = 'INSERT INTO users VALUES (:user1)'
   g.conn.execute(text(cmd), user1 = user)
-  return redirect('/')
+  return redirect('/form')
 
 
 if __name__ == "__main__":
