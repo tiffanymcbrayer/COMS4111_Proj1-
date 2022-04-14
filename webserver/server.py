@@ -102,6 +102,7 @@ def index():
 
 @app.route('/form')
 def addPage():
+  print(userID)
   if userID == -1:
     return render_template('login.html')
   else:
