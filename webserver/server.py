@@ -34,14 +34,6 @@ DATABASEURI = "postgresql://"+DB_USER+":"+DB_PASSWORD+"@"+DB_SERVER+"/proj1part2
 engine = create_engine(DATABASEURI)
 
 
-# # Here we create a test table and insert some values in it
-# engine.execute("""DROP TABLE IF EXISTS test;""")
-# engine.execute("""CREATE TABLE IF NOT EXISTS test (
-#   id serial,
-#   name text
-# );""")
-# engine.execute("""INSERT INTO test(name) VALUES ('grace hopper'), ('alan turing'), ('ada lovelace');""")
-
 
 userID_ = -1
 userIDdict = dict(userID = userID_)
@@ -160,8 +152,8 @@ def add():
   print(name, waitTime, cover, minSpend, capacity, ageMin, ageMax, group)
 
 
-  # cmd = 'INSERT INTO users VALUES (:user1)'
-  # g.conn.execute(text(cmd), user1 = user)
+  cmd = 'INSERT INTO users VALUES (:user1)'
+  g.conn.execute(text(cmd), user1 = user)
   return redirect('/')
 
 
