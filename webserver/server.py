@@ -34,6 +34,13 @@ DATABASEURI = "postgresql://"+DB_USER+":"+DB_PASSWORD+"@"+DB_SERVER+"/proj1part2
 engine = create_engine(DATABASEURI)
 
 
+# # Here we create a test table and insert some values in it
+# engine.execute("""DROP TABLE IF EXISTS test;""")
+# engine.execute("""CREATE TABLE IF NOT EXISTS test (
+#   id serial,
+#   name text
+# );""")
+# engine.execute("""INSERT INTO test(name) VALUES ('grace hopper'), ('alan turing'), ('ada lovelace');""")
 
 
 userID_ = -1
@@ -69,7 +76,6 @@ def teardown_request(exception):
 
 @app.route('/')
 def index():
-  print(request.args)
   placeInfo = g.conn.execute("""
     select place.placeID, place.name, place.picture, has.address, location.neighborhood, location.closestSubway
     from place, has, location
