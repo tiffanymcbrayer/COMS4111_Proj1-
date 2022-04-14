@@ -140,10 +140,18 @@ def add():
   user = request.form['user']
   today = date.today()
   print("Today's date:", today)
-  
-  print(user)
-  cmd = 'INSERT INTO users VALUES (:user1)'
-  g.conn.execute(text(cmd), user1 = user)
+  name = request.form['name']
+  waitTime = request.form['waitTime']
+  cover = request.form['cover']
+  minSpend = request.form['minSpend']
+  capacity = request.form['capacity']
+  ageMin = request.form['ageMin']
+  ageMax = request.form['ageMax']
+  group = request.form['group']
+
+
+  # cmd = 'INSERT INTO users VALUES (:user1)'
+  # g.conn.execute(text(cmd), user1 = user)
   return redirect('/')
 
 
