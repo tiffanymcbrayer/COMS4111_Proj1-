@@ -100,7 +100,7 @@ def index():
 
 @app.route('/layout')
 def layout():
-  return render_template('layout.html', **userIDdict)
+  return **userIDdict
 
 @app.route('/form')
 def addPage():
