@@ -143,7 +143,7 @@ def login():
     return render_template('login.html', **userIDdict)
 
 @app.route('/addLogin', methods=['POST'])
-def add():
+def addLogin():
   user = request.form['user']
   print(user)
   cmd = 'INSERT INTO users VALUES (:user1)'
