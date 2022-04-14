@@ -18,13 +18,15 @@
                         UserID: {{userID}}
                     </div>
                     <div>
-                        ID number: <input type="number" name="user"> 
-                        <!-- {%if error == 1%}
-                            <div>error </div>
-                        {%endif%} -->
+                        <select id="cars" name="cars">
+                            <option value="volvo">Volvo</option>
+                            <option value="saab">Saab</option>
+                            <option value="fiat">Fiat</option>
+                            <option value="audi">Audi</option>
+                        </select>
                     </div>
                     <div>
-                        Name: <input type="number" name="name"> 
+                        Name: <input type="text" name="name"> 
                     </div>
                     <div>
                         Wait time: <input type="number" name="waitTime"> 
@@ -37,6 +39,7 @@
                     </div>
                     <div>
                         Capacity: <input type="number" name="capacity"> 
+
                     </div>
                     <div>
                         Age Range: <input type="number" name="ageMin"> <input type="number" name="ageMax"> 
