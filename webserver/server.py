@@ -149,6 +149,8 @@ def login():
 
 @app.route('/addLogin', methods=['POST'])
 def addLogin():
+
+  ## check here if the userID exists, if yes then dont add to the db if no then add the userID to the database
   user = request.form['user']
   userIDdict['userID'] = user
   print(userIDdict) 
