@@ -99,7 +99,7 @@ def index():
   return render_template("welcome.html", **coll)
 
 @app.route('/layout')
-def addPage():
+def layout():
   return render_template('layout.html', **userIDdict)
 
 @app.route('/form')
