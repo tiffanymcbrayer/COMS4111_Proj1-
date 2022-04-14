@@ -98,13 +98,14 @@ def index():
   
   return render_template("welcome.html", **coll)
 
-@app.route('/layout')
-def layout():
-  return render_template(**userIDdict)
+
 
 @app.route('/form')
 def addPage():
-  return render_template('form.html', **userIDdict)
+  if userID == -1:
+    return render_template('login.html')
+  else:
+    return render_template('form.html', **userIDdict)
 
     
 @app.route('/view/<id>')
