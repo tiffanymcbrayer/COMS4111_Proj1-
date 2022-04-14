@@ -149,6 +149,8 @@ def add():
   ageMax = request.form['ageMax']
   group = request.form['group']
 
+  print(name, waitTime, cover, minSpend, capacity, ageMin, ageMax, group)
+
 
   # cmd = 'INSERT INTO users VALUES (:user1)'
   # g.conn.execute(text(cmd), user1 = user)
