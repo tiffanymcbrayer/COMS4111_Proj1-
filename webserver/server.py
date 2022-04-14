@@ -102,6 +102,7 @@ def index():
 
 @app.route('/form')
 def addPage():
+  print(userID_)
   if userID_ == -1:
     return redirect('/login')
   else:
@@ -149,9 +150,8 @@ def login():
 @app.route('/addLogin', methods=['POST'])
 def addLogin():
   user = request.form['user']
-  userID = user
-  print(userID)
-  
+  userID_ = user
+
   print(user)
   cmd = 'INSERT INTO users VALUES (:user1)'
   g.conn.execute(text(cmd), user1 = user)
