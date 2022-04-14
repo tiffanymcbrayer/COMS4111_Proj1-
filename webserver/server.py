@@ -150,7 +150,8 @@ def login():
 @app.route('/addLogin', methods=['POST'])
 def addLogin():
   user = request.form['user']
-  userID_ = user
+  userIDdict['userID'] = user
+  print(userIDdict) 
 
   print(user)
   cmd = 'INSERT INTO users VALUES (:user1)'
