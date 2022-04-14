@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<body></body>
+
+<div class = "container">
+    <div class = 'row'>
+        <div class="col-md-6">
+            <div>
+                login page
+            </div>
+            <form method="POST" action="/addLogin">
+                <p>
+                    <div>
+                        manual userID: {{userID}}
+                    </div>
+                    <div>
+                        ID number: <input type="number" name="user"> 
+                    </div>
+                </p>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
