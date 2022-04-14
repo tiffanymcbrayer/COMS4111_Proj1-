@@ -103,11 +103,20 @@ def index():
 
 @app.route('/form')
 def addPage():
+  placeList = g.conn.execute("""
+    select *
+    from place
+  """)
+  places = []
+  for place in placeList:
+    places.append(place)
+  placeDict = dict(places = places)
+  
   print(userID_)
   if userIDdict.get('userID') == -1:
     return redirect('/login')
   else:
-    return render_template('form.html', **userIDdict)
+    return render_template('form.html', **userIDdict, **placeDict)
 
     
 @app.route('/view/<id>')
