@@ -10,6 +10,7 @@ A debugger such as "pdb" may be helpful for debugging.
 Read about it online.
 """
 
+from datetime import date
 import os
 from sqlalchemy import *
 from sqlalchemy.pool import NullPool
@@ -137,6 +138,9 @@ def another():
 @app.route('/add', methods=['POST'])
 def add():
   user = request.form['user']
+  today = date.today()
+  print("Today's date:", today)
+  
   print(user)
   cmd = 'INSERT INTO users VALUES (:user1)'
   g.conn.execute(text(cmd), user1 = user)
