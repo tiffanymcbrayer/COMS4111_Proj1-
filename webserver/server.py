@@ -42,6 +42,8 @@ engine.execute("""CREATE TABLE IF NOT EXISTS test (
 engine.execute("""INSERT INTO test(name) VALUES ('grace hopper'), ('alan turing'), ('ada lovelace');""")
 
 
+userID = -1
+userIDdict = dict(userID = userID)
 
 
 @app.before_request
@@ -71,19 +73,6 @@ def teardown_request(exception):
     pass
 
 
-#
-# @app.route is a decorator around index() that means:
-#   run index() whenever the user tries to access the "/" path using a GET request
-#
-# If you wanted the user to go to e.g., localhost:8111/foobar/ with POST or GET then you could use
-#
-#       @app.route("/foobar/", methods=["POST", "GET"])
-#
-# PROTIP: (the trailing / in the path is important)
-# [p]
-# see for routing: http://flask.pocoo.org/docs/0.10/quickstart/#routing
-# see for decorators: http://simeonfranklin.com/blog/2012/jul/1/python-decorators-in-12-steps/
-#
 @app.route('/')
 def index():
   print(request.args)
@@ -112,7 +101,7 @@ def index():
 
 @app.route('/form')
 def addPage():
-  return render_template('form.html')
+  return render_template('form.html', **userIDdict)
 
     
 @app.route('/view/<id>')
@@ -151,8 +140,15 @@ def add():
 
 @app.route('/login')
 def login():
-    abort(401)
-    this_is_never_executed()
+    return render_template('login.html', **userIDdict)
+
+@app.route('/addLogin', methods=['POST'])
+def add():
+  user = request.form['user']
+  print(user)
+  cmd = 'INSERT INTO users VALUES (:user1)'
+  g.conn.execute(text(cmd), user1 = user)
+  return redirect('/')
 
 
 if __name__ == "__main__":
