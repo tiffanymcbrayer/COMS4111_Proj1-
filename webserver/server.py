@@ -151,16 +151,16 @@ def view_name(id = None):
   for result in menuInfo:
     if result[0] == int(id):
       if result[5] not in countedMenu:
-        menus.append([result[5]])
+        menus.append(result[5])
         menus.append([])
         countedMenu.append(result[5])
-        # index  = countedMenu.index(result[5])
-        # entry = [result[4], result[3]] # name, cost 
-        # menus[index][1].append(entry)
+        index  = countedMenu.index(result[5])
+        entry = [result[4], result[3]] # name, cost 
+        menus[index][1].append(entry)
       else:
         index  = countedMenu.index(result[5])
-        # entry = [result[4], result[3]] # name, cost 
-        # menus[index][1].append(entry)
+        entry = [result[4], result[3]] # name, cost 
+        menus[index][1].append(entry)
   print(menus)
       
   menusDict = dict(menuList = menus)
