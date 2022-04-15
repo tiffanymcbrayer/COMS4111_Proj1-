@@ -138,7 +138,7 @@ def events(id = None):
 
   for eventid, placeid, placename, name, description, numberattendees, address, date, recur, allday, timerange, starttime, endtime in eventInfo:
     entry = [placename, name, description, numberattendees, address, date, recur, allday, timerange, starttime, endtime, eventid]
-    print(eventID)
+    print(eventid)
   eventDict = dict(event = entry)
   eventInfo.close()
 
