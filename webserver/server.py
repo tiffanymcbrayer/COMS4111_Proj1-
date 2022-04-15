@@ -286,7 +286,9 @@ def addAttend():
   """
   numberAttendees = g.conn.execute(text(cmd3),  user1 = user)
   print("number")
-  print(numberAttendees)
+  
+  for result in numberAttendees:
+    print(result)
   numberAttendees.close()
 
 
