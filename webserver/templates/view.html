@@ -5,66 +5,73 @@
 
 <body style="background-color:rgb(245, 245, 235);"></body>
 <b>
-    <div>
-        <!-- name -->
-        <div size= '40'>
-            <font size= '40'>
-                {{data[1]}}
-            </font>
-        </div>
-        <!-- picture -->
-        <div>
-            <img src={{data[2]}} width = 30%>
-        </div>
-        <!-- address -->
-        <div>
-            {{data[3]}}
-        </div>
-        <!-- neighborhood -->
-        <div>
-            {{data[4]}}
-        </div>
-        <!-- closest subway  -->
-        <div>
-            {{data[5]}} closest subway stop
-        </div>
-    </div>
-
-    <br>
-
-    <div>
-        Hours:
-        {% for day, start, end in hoursList%}
-        <div>
-            <small>
-                {{day}}: {{start}} - {{start}}
-            </small>
-        </div>
-        {% endfor %}
-    </div>
-    <br>
-    <div>
-        <div>
-            <b>Menus</b>
-        </div>
-        <div>
-            {% for menu in menuList%}
+    <div class = "container"></div>
+        <div class = "col-md-6">
             <div>
-            {{menu[0]}}
-            {% for name, cost in menu[1]%}
-            <div>
-                <small>
-                    {{name}} ${{cost}}
-                </small>
+                <!-- name -->
+                <div size= '40'>
+                    <font size= '40'>
+                        {{data[1]}}
+                    </font>
+                </div>
+                <!-- picture -->
+                <div>
+                    <img src={{data[2]}} width = 30%>
+                </div>
+                <!-- address -->
+                <div>
+                    {{data[3]}}
+                </div>
+                <!-- neighborhood -->
+                <div>
+                    {{data[4]}}
+                </div>
+                <!-- closest subway  -->
+                <div>
+                    {{data[5]}} closest subway stop
+                </div>
             </div>
-            {% endfor %}
-        </div>
-        {% endfor %}
 
-        </div>
-        
+            <br>
 
-    </div>
+            <div>
+                Hours:
+                {% for day, start, end in hoursList%}
+                <div>
+                    <small>
+                        {{day}}: {{start}} - {{start}}
+                    </small>
+                </div>
+                {% endfor %}
+            </div>
+            <br>
+            <div>
+                <div>
+                    <b>Menus</b>
+                </div>
+                <div>
+                    {% for menu in menuList%}
+                    <div>
+                    {{menu[0]}}
+                    {% for name, cost in menu[1]%}
+                    <div>
+                        <small>
+                            {{name}} ${{cost}}
+                        </small>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+
+                </div>
+                
+
+            </div>
+        </div>
+        <div class = "col-md-6">
+            Reviews
+        </div>
+    </div>      
 
     
 
