@@ -302,7 +302,8 @@ def addAttend():
 
   return redirect('/')
 
-# Example of adding new data to the database
+
+# Adding info from form.html
 @app.route('/add', methods=['POST'])
 def add():
   user = request.form['user']
@@ -319,11 +320,10 @@ def add():
     g.conn.execute(text(cmd), user1 = user)
   usersList.close()
 
-  today = date.today()
-  print("Today's date:", today)
+  day = date.today()
+  print("Today's date:", day)
 
   placeID = request.form['placeID']
-  # should not need to be error checked bc of the drop down 
 
   waitTime = request.form['waitTime']
   cover = request.form['cover']
@@ -341,9 +341,15 @@ def add():
     return redirect('/form')
   ageRange = ageMin + "-" + ageMax
   
-  
 
   print(placeID, waitTime, cover, minSpend, capacity, ageRange, group)
+
+  cmd2 = """
+  INSERT INTO form_review VALUES 
+  ((:user1), (:placeID1), (:day1), (:waitTime1), (:cover1), (:minSpend1), (:ageRange1), (:group1))
+  """
+  g.conn.execute(text(cmd2), user1 = int(user), placeID1 = int(placeID), day1 = str(day), waitTime1 = int(waitTime), cover1 = int(cover), minSpend1 = int(minSpend), ageRange1 = ageRange, group1 = int(group))
+  #userid	placeid	day	wait	cover	minspend	capacity	agerange	groupsize
 
 
   return redirect('/')
