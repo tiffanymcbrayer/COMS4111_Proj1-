@@ -351,15 +351,12 @@ def add():
     print(result)
     compares.append([result[0], result[1], str(result[2])])
   currForm = [int(user), int(placeID), str(day)]
-  print(compares)
-  print(currForm)
   if currForm not in compares:
-    print("yes")
-  #   cmd2 = """
-  #   INSERT INTO form_review VALUES 
-  #   ((:user1), (:placeID1), (:day1), (:waitTime1), (:cover1), (:minSpend1), (:capacity1), (:ageRange1), (:group1))
-  #   """
-  #   g.conn.execute(text(cmd2), user1 = int(user), placeID1 = int(placeID), day1 = str(day), waitTime1 = int(waitTime), cover1 = int(cover), minSpend1 = int(minSpend), capacity1 = int(capacity), ageRange1 = ageRange, group1 = int(group))
+    cmd2 = """
+    INSERT INTO form_review VALUES 
+    ((:user1), (:placeID1), (:day1), (:waitTime1), (:cover1), (:minSpend1), (:capacity1), (:ageRange1), (:group1))
+    """
+    g.conn.execute(text(cmd2), user1 = int(user), placeID1 = int(placeID), day1 = str(day), waitTime1 = int(waitTime), cover1 = int(cover), minSpend1 = int(minSpend), capacity1 = int(capacity), ageRange1 = ageRange, group1 = int(group))
   else:
     return redirect('/form')
   formList.close()
