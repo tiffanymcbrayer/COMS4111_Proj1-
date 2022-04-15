@@ -157,17 +157,18 @@ def add():
   # should not need to be error checked bc of the drop down 
 
   waitTime = request.form['waitTime']
-
   cover = request.form['cover']
   minSpend = request.form['minSpend']
+  
+  if not (waitTime.isnumeric() or cover.isnumeric() or minSpend.isnumeric()):
+    return redirect('/form')
+
   capacity = request.form['capacity']
 
   ageMin = request.form['ageMin'] # this is a string
   ageMax = request.form['ageMax'] # this is a string
-
   if int(ageMin) > int(ageMax):
     return redirect('/form')
-  
   ageRange = ageMin + "-" + ageMax
   
 
