@@ -282,7 +282,7 @@ def addAttend():
   cmd3 = """
     select numberattendees
     from event
-    where eventid = (:eventID1)
+    where eventid = (:user)
   """
   numberAttendees = g.conn.execute(text(cmd3),  user1 = user)
   print(numberAttendees)
