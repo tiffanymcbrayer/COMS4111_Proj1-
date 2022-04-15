@@ -40,15 +40,13 @@
         Menus
         {% for menu in menuList%}
         <div>
+            menu name:
             {{menu}}
-            <!-- {% for name in menu%}
-                {% for item,cost in name%}
-                each item
-                {{item}}
-                {{cost}}
-                {% endfor %}
-            {{name}}
-            {% endfor %} -->
+            {% for name in menu%}
+            <div>
+                {{name}}
+            </div>
+            {% endfor %}
         </div>
         {% endfor %}
 
