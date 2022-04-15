@@ -265,12 +265,12 @@ def addAttend():
   usersList.close()
 
   eventID = request.form['eventID']
-  usersList = g.conn.execute("""
+  attendeesList = g.conn.execute("""
     select *
     from attends
   """)
   attendees = []
-  for result in attendees:
+  for result in attendeesList:
     attendees.append([result[0], result[1]])
   print(attendees)
   currEntry = [user, eventID]
