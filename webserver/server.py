@@ -148,7 +148,7 @@ def add():
   if int(user) not in users:
     cmd = 'INSERT INTO users VALUES (:user1)'
     g.conn.execute(text(cmd), user1 = user)
-
+  usersList.close()
 
   today = date.today()
   print("Today's date:", today)
@@ -180,21 +180,7 @@ def add():
   return redirect('/')
 
 
-@app.route('/login')
-def login():
-    return render_template('login.html', **userIDdict)
 
-# @app.route('/addLogin', methods=['POST'])
-# def addLogin():
-
-#   ## check here if the userID exists, if yes then dont add to the db if no then add the userID to the database
-#   user = request.form['user']
-#   userIDdict['userID'] = user
-
-#   print(user)
-#   cmd = 'INSERT INTO users VALUES (:user1)'
-#   g.conn.execute(text(cmd), user1 = user)
-#   return redirect('/form')
 
 
 if __name__ == "__main__":
