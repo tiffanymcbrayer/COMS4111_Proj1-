@@ -265,8 +265,21 @@ def addAttend():
   usersList.close()
 
   eventID = request.form['eventID']
-  cmd2 = 'INSERT INTO attends VALUES ((:user1),(:eventID1))'
-  g.conn.execute(text(cmd2),  user1 = user, eventID1 = eventID)
+  usersList = g.conn.execute("""
+    select *
+    from attends
+  """)
+  attendees = []
+  for result in attendees:
+    attendees.append([result[0], result[1]])
+  print(attendees)
+  currEntry = [user, eventID]
+  print(currEntry)
+  if currEntry in attendees:
+    print("yes")
+
+  # cmd2 = 'INSERT INTO attends VALUES ((:user1),(:eventID1))'
+  # g.conn.execute(text(cmd2),  user1 = user, eventID1 = eventID)
 
 
   return redirect('/')
