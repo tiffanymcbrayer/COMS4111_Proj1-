@@ -150,7 +150,7 @@ def view_name(id = None):
   for result in menuInfo:
     if result[0] == int(id):
       entry = [result[5], [result[4], result[3]]] # name, cost 
-      menus.append([entry[5]])
+      menus.append([result[5]])
   menusDict = dict(menuList = menus)
   # [drinks,[item cost, item name, ]]
 
