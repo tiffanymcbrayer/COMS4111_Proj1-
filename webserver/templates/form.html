@@ -15,11 +15,13 @@
             <form method="POST" action="/add">
                 <p>
                     <div>
-                        UserID: {{userID}}
+                        <!-- UserID: {{userID}} -->
+                        Name: <input type="text" name="user"> 
                     </div>
                     
-                    <div>
-                        Name: <input type="text" name="name"> 
+                    <div>                        
+                        Name: <input type="text" name="name">
+                        <!-- drop down  -->
                     </div>
                     <div>
                         Wait time: <input type="number" name="waitTime"> 
@@ -35,7 +37,8 @@
 
                     </div>
                     <div>
-                        Age Range: <input type="number" name="ageMin"> <input type="number" name="ageMax"> 
+                        Age Range: <input type="number" name="ageMin"><input type="number" name="ageMax"> 
+                        <!-- drop down  -->
                     </div>
                     <div>
                         Group size : <input type="number" name="group"> 

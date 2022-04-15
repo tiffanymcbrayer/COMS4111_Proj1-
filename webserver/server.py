@@ -84,7 +84,6 @@ def index():
     collective.append(entry)
   placeInfo.close()
   coll = dict(data = collective)
-  print(coll)
 
 
   
@@ -138,14 +137,23 @@ def another():
 @app.route('/add', methods=['POST'])
 def add():
   today = date.today()
+
   print("Today's date:", today)
+  user = request.form['user']
+  # check if user is already in the database
+
   name = request.form['name']
+  # should not need to be error checked bc of the drop down 
+
   waitTime = request.form['waitTime']
+
   cover = request.form['cover']
   minSpend = request.form['minSpend']
   capacity = request.form['capacity']
-  ageMin = request.form['ageMin']
-  ageMax = request.form['ageMax']
+
+  ageMin = request.form['ageMin'] # this is a string
+  ageMax = request.form['ageMax'] # this is a string
+
   group = request.form['group']
 
   print(name, waitTime, cover, minSpend, capacity, ageMin, ageMax, group)
@@ -164,7 +172,6 @@ def addLogin():
   ## check here if the userID exists, if yes then dont add to the db if no then add the userID to the database
   user = request.form['user']
   userIDdict['userID'] = user
-  print(userIDdict) 
 
   print(user)
   cmd = 'INSERT INTO users VALUES (:user1)'
