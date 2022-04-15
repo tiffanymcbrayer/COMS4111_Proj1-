@@ -99,7 +99,8 @@ def addPage():
   """)
   places = []
   for place in placeList:
-    places.append(place[1])
+    entry = [place[0], place[1]] # placeID, place name
+    places.append(entry)
   placeDict = dict(data = places)
   
   print(userID_)
@@ -142,7 +143,7 @@ def add():
   user = request.form['user']
   # check if user is already in the database
 
-  name = request.form['name']
+  placeID = request.form['placeID']
   # should not need to be error checked bc of the drop down 
 
   waitTime = request.form['waitTime']
@@ -156,7 +157,7 @@ def add():
 
   group = request.form['group']
 
-  print(name, waitTime, cover, minSpend, capacity, ageMin, ageMax, group)
+  print(placeID, waitTime, cover, minSpend, capacity, ageMin, ageMax, group)
 
 
   return redirect('/')

@@ -23,9 +23,9 @@
                                   
                         
                         
-                        Name: <select name="name">
-                        {% for place in data %}  
-                            <option value={{place}}>{{place}}</option>
+                        Name: <select name="placeID">
+                        {% for placeId,name in data %}  
+                            <option value={{placeId}}>{{name}}</option>
                         {% endfor %}  
                         </select>
                         <!-- drop down  -->
