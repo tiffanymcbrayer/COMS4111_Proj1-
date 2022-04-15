@@ -145,6 +145,7 @@ def add():
   users = []
   for userID in usersList:
     users.append(userID)
+  print(users)
   if user not in users:
     print("not in db")
     # cmd = 'INSERT INTO users VALUES (:user1)'
