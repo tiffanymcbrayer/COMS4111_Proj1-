@@ -34,45 +34,72 @@
                 </div>
             </div>
             <div class = "col-md-6">
-                Reviews
-                <!-- waittime -->
-                waitTime: {{review[0]}}
-                <!-- cover -->
-                waitTime: {{review[1]}}
+                <br>
+                <br>
+                <br>
+                <div>
+                    Reviews
+                </div>
+                <small>
+                    <div>
+                        <!-- waittime -->
+                        Avergae Wait Time: {{review[0]}} minutes
+                    </div>
+                    <div>
+                        <!-- cover -->
+                        Average Cover: ${{review[1]}}
+                    </div>
+                    <div>
+                        <!-- minspend -->
+                        Avergae Minimum Spend: ${{review[2]}}
+                    </div>
+                    <div>
+                        <!-- capacity -->
+                        Average Capacity: {{review[3]}}%
+                    </div>
+                    <div>
+                        <!-- groupsize -->
+                        Average Group Size: {{review[4]}}
+                    </div>
+                </small>
+                
+                
             </div>
         </div>
 
         <br>
 
         <div class = "row">
-            <div>
-                Hours:
-                {% for day, start, end in hoursList%}
+            <div class = "col-md-6">
                 <div>
-                    <small>
-                        {{day}}: {{start}} - {{start}}
-                    </small>
-                </div>
-                {% endfor %}
-            </div>
-            <br>
-            <div>
-                <div>
-                    <b>Menus</b>
-                </div>
-                <div>
-                    {% for menu in menuList%}
-                    <div>
-                    {{menu[0]}}
-                    {% for name, cost in menu[1]%}
+                    Hours:
+                    {% for day, start, end in hoursList%}
                     <div>
                         <small>
-                            {{name}} ${{cost}}
+                            {{day}}: {{start}} - {{start}}
                         </small>
                     </div>
                     {% endfor %}
                 </div>
-                {% endfor %}
+                <br>
+                <div>
+                    <div>
+                        <b>Menus</b>
+                    </div>
+                    <div>
+                        {% for menu in menuList%}
+                        <div>
+                        {{menu[0]}}
+                        {% for name, cost in menu[1]%}
+                        <div>
+                            <small>
+                                {{name}} ${{cost}}
+                            </small>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>

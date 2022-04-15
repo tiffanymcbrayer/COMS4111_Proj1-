@@ -176,9 +176,8 @@ def view_name(id = None):
     where placeID = (:id1)
   """
   reviewInfo = g.conn.execute(text(cmd), id1 = id)
-  for waittime, cover, minspend, capacuty, groupSize in reviewInfo:
-    entry = [int(waittime), int(cover), int(minspend), int(capacuty), int(groupSize)]
-    print(waittime, cover, minspend, capacuty, groupSize)
+  for waittime, cover, minspend, capacity, groupSize in reviewInfo:
+    entry = [int(waittime), int(cover), int(minspend), int(capacity), int(groupSize)]
   reviewDict = dict(review = entry)
   return render_template('view.html', **coll, **hoursDict, **menusDict, **reviewDict)
 
