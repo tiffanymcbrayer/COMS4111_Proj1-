@@ -71,7 +71,6 @@ def index():
     select place.placeID, place.name, place.picture, has.address, location.neighborhood, location.closestSubway
     from place, has, location
     where place.placeID = has.placeID and has.address = location.address
-    limit 3
   """)
 
 
@@ -364,34 +363,6 @@ def add():
 
   return redirect('/')
 
-# @app.route('/search_results/<searchItem>')
-# def search_results(searchItem=None):
-  
-  
-  
-
-#     # searchItem = searchItem.lower()
-#     # results = []
-#     # for key, value in places.items():
-#     #     if not (value["name"].lower().find(searchItem) == -1):
-#     #         results.append(value)
-#     #     elif not (value["type"].lower().find(searchItem) == -1):
-#     #         results.append(value)
-#     #     elif not (value["closestSubway"].lower().find(searchItem) == -1):
-#     #         results.append(value)
-#     #     elif not (value["neighborhood"].lower().find(searchItem) == -1):
-#     #         results.append(value)
-#     # num =len(results)
-
-
-#   return render_template('search_results.html', **searchDict)
-
-# @app.route('/search', methods=['POST'])
-# def search():
-#   search_input = request.form(search_input)
-#   print(search_input)
-#   searchDict = dict(searchItem = search_input)
-#   return redirect('/search_results/'+seach_input)
 
 
 
