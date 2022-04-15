@@ -235,9 +235,9 @@ def view_name(id = None):
     on temp.placeid = has.placeid and temp.placeID = (:id1)
   """
   eventInfo = g.conn.execute(text(cmd2), id1 = id)
-  print(eventInfo)
   eventList = []
   for result in eventInfo:
+    print(result)
     eventList.append([result[0],result[2]]) # just appending the name, will create the hyperlink after
   eventDict = dict(events = eventList)
   print(eventDict)
