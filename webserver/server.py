@@ -112,24 +112,36 @@ def addPage():
 def events(id = None):
   # EVENT INFO 
   cmd2 = """
-    WITH temp AS(
-      SELECT hold.eventid,	hold.placeid, event.name, event.description, event.numberattendees
-      FROM hold join event
-      on hold.eventID = event.eventID
-    )
+    WITH temp3 AS(
+      WITH temp2 AS (
+        WITH temp AS(
+          SELECT hold.eventid,	hold.placeid, event.name, event.description, event.numberattendees
+          FROM hold join event
+          on hold.eventID = event.eventID 
+        )
 
-    select temp.eventid,	temp.placeid, temp.name, temp.description, temp.numberattendees, has.address
-    from temp join has
-    on temp.placeid = has.placeid and temp.placeID = (:id1)
+        select temp.eventid,	temp.placeid, temp.name, temp.description, temp.numberattendees, has.address
+        from temp join has
+        on temp.placeid = has.placeid
+      )
+
+      select temp2.eventid,	temp2.placeid, place.name as placename, temp2.name, temp2.description, temp2.numberattendees, temp2.address
+      from temp2 join place
+      on temp2.placeid = place.placeid
+    )
+    select temp3.eventid,	temp3.placeid, temp3.placename, temp3.name, temp3.description, temp3.numberattendees, temp3.address, occur_when.date, 
+    occur_when.recur, occur_when.allday, occur_when.timerange, occur_when.starttime, occur_when.endtime
+    from temp3 join occur_when
+    on temp3.eventid = occur_when.eventid
   """
   eventInfo = g.conn.execute(text(cmd2), id1 = id)
 
-  for eventid, placeid, name, description, numberattendees, address in eventInfo:
-    entry = [placeid, name, description, numberattendees, address]
+  for eventid, placeid, placename, name, description, numberattendees, address, date, recur, allday, timerange, starttime, endtime in eventInfo:
+    entry = [placename, name, description, numberattendees, address, date, recur, allday, timerange, starttime, endtime]
   eventDict = dict(event = entry)
   eventInfo.close()
 
-  # eventid	placeid	name	description	numberattendees	address
+  # eventid	placeid	placename	name	description	numberattendees	address
 
   return render_template('event.html', **eventDict)
     

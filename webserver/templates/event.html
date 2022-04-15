@@ -1,3 +1,4 @@
+{% extends "layout.html" %}
 {% block content %}
 <!-- <script type="text/javascript" src="{{ url_for('static', filename = 'view.js') }}"></script>   -->
 
@@ -7,8 +8,46 @@
       Events
     </div>
     <div>
-        {{event}}
+        <!-- placename -->
+        Place event occuring at: {{event[0]}}
     </div>
+    <div>
+        <!-- eventname -->
+        Event name: {{event[1]}}
+    </div>
+    <div>
+        <!-- description -->
+        Description:
+        <div>
+            {{event[2]}}
+        </div>
+    </div>
+    <div>
+        <!-- numberattendees -->
+        Number of attendees: {{event[3]}}
+    </div>
+    <div>
+        <!-- address -->
+        Address: {{event[4]}}
+    </div>
+    <div>
+        <!-- recur -->
+        Recur? {{event[5]}}
+    </div>
+    <div>
+        <!-- allday -->
+        All day? {{event[6]}}
+    </div>
+    <div>
+        <!-- starttime -->
+        Start time: {{event[8]}}
+    </div>
+    <div>
+        <!-- endtime -->
+        End time: {{event[9]}}
+    </div>
+
+
 
 
 </b>
