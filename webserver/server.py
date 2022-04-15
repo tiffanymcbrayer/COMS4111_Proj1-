@@ -122,7 +122,7 @@ def events(id = None):
 
         select temp.eventid,	temp.placeid, temp.name, temp.description, temp.numberattendees, has.address
         from temp join has
-        on temp.placeid = has.placeid and (:id1)
+        on temp.placeid = has.placeid and temp.placeid = (:id1)
       )
 
       select temp2.eventid,	temp2.placeid, place.name as placename, temp2.name, temp2.description, temp2.numberattendees, temp2.address
