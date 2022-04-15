@@ -177,9 +177,10 @@ def view_name(id = None):
   """
   reviewInfo = g.conn.execute(text(cmd), id1 = id)
   for waittime, cover, minspend, capacuty, groupSize in reviewInfo:
+    entry = [int(waittime), int(cover), int(minspend), int(capacuty), int(groupSize)]
     print(waittime, cover, minspend, capacuty, groupSize)
-
-  return render_template('view.html', **coll, **hoursDict, **menusDict)
+  reviewDict = dict(review = entry)
+  return render_template('view.html', **coll, **hoursDict, **menusDict, **reviewDict)
 
 
 
