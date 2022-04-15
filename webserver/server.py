@@ -147,14 +147,18 @@ def view_name(id = None):
     group by newTable.placeid, newTable.menuid, newTable.itemid, newTable.cost, newTable.name, has_menu.name
   """)
   menus = []
+  for result in menuInfo:
+    menus.append(result[0])
+  menusDict = dict(menuList = menus)
   # [drinks,[item cost, item name, ]]
-  # u
+
+  # placeid, menuid, itemid, cost, name, menuName
 
 
 
 
   menuInfo.close()
-  return render_template('view.html', **coll, **hoursDict)
+  return render_template('view.html', **coll, **hoursDict, **menusDict)
 
 
 
