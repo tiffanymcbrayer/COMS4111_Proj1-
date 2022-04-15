@@ -147,10 +147,21 @@ def view_name(id = None):
     group by newTable.placeid, newTable.menuid, newTable.itemid, newTable.cost, newTable.name, has_menu.name
   """)
   menus = []
+  countedMenu = []
   for result in menuInfo:
     if result[0] == int(id):
-      entry = [result[5], [result[4], result[3]]] # name, cost 
-      menus.append([result[5]])
+      if result[5] not in countedMenu:
+        menus.append([result[5]])
+        countedMenu.append(result[5])
+        index  = countedMenu.index(result[5])
+        entry = [result[4], result[3]] # name, cost 
+        menus[index].append(entry)
+      else:
+        index  = countedMenu.index(result[5])
+        entry = [result[4], result[3]] # name, cost 
+        menus[index].append(entry)
+
+      
   menusDict = dict(menuList = menus)
   # [drinks,[item cost, item name, ]]
 
