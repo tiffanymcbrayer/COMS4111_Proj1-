@@ -122,12 +122,12 @@ def events(id = None):
 
         select temp.eventid,	temp.placeid, temp.name, temp.description, temp.numberattendees, has.address
         from temp join has
-        on temp.placeid = has.placeid
+        on temp.placeid = has.placeid and (:id1)
       )
 
       select temp2.eventid,	temp2.placeid, place.name as placename, temp2.name, temp2.description, temp2.numberattendees, temp2.address
       from temp2 join place
-      on temp2.placeid = place.placeid
+      on temp2.placeid = place.placeid 
     )
     select temp3.eventid,	temp3.placeid, temp3.placename, temp3.name, temp3.description, temp3.numberattendees, temp3.address, occur_when.date, 
     occur_when.recur, occur_when.allday, occur_when.timerange, occur_when.starttime, occur_when.endtime
