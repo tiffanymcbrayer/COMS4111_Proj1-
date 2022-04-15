@@ -364,6 +364,26 @@ def add():
 
   return redirect('/')
 
+@app.route('/search_results/<searchItem>')
+def search_results(searchItem=None):
+  search_input = request.form(search_input)
+
+    # searchItem = searchItem.lower()
+    # results = []
+    # for key, value in places.items():
+    #     if not (value["name"].lower().find(searchItem) == -1):
+    #         results.append(value)
+    #     elif not (value["type"].lower().find(searchItem) == -1):
+    #         results.append(value)
+    #     elif not (value["closestSubway"].lower().find(searchItem) == -1):
+    #         results.append(value)
+    #     elif not (value["neighborhood"].lower().find(searchItem) == -1):
+    #         results.append(value)
+    # num =len(results)
+
+
+    return render_template('search_results.html')
+
 
 
 
