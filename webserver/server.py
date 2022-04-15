@@ -236,3 +236,16 @@ if __name__ == "__main__":
 
 
   run()
+
+
+
+'''
+<div>
+        Hours:
+        {% for day, start, end in hoursList}
+        <div>
+            {{day}}: {{start}} - {{start}}
+        </div>
+        {% endfor %}
+    </div>
+    '''
