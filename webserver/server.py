@@ -103,9 +103,7 @@ def addPage():
     places.append(entry)
   placeDict = dict(data = places)
   
-  # print(userID_)
-  # if userIDdict.get('userID') == -1:
-  #   return redirect('/login')
+  placeList.close()
   return render_template('form.html', **userIDdict, **placeDict)
 
     
@@ -124,7 +122,20 @@ def view_name(id = None):
 
   placeInfo.close()
 
-  return render_template('view.html', **coll)
+  operatingHours = g.conn.execute("""
+    select *
+    from operating_open
+  """)
+  hours = []
+  for result in operatingHours:
+    if result[0] == int(id):
+      entry = [result[1], result[2], result[3]] # day, start. end 
+      hours.append(entry)
+  hoursDict = dict(hoursList = hours)
+
+
+  operatingHours.close()
+  return render_template('view.html', **coll, **hoursDict)
 
 
 
