@@ -280,7 +280,7 @@ def addAttend():
     g.conn.execute(text(cmd2),  user1 = user, eventID1 = eventID)
   
   cmd3 = """
-    select numberattendees
+    select *
     from event
     where eventid = (:user1)
   """
