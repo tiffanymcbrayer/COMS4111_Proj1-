@@ -156,11 +156,13 @@ def view_name(id = None):
         countedMenu.append(result[5])
         index  = countedMenu.index(result[5])
         entry = [result[4], result[3]] # name, cost 
-        menus[index][1].append(entry)
+        print(menus[index][1])
+        #menus[index][1].append(entry)
       else:
         index  = countedMenu.index(result[5])
         entry = [result[4], result[3]] # name, cost 
-        menus[index][1].append(entry)
+        print(menus[index][1])
+        #menus[index][1].append(entry)
   print(menus)
       
   menusDict = dict(menuList = menus)
