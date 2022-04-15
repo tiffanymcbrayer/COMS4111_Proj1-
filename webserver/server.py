@@ -146,16 +146,13 @@ def add():
   for userID in usersList:
     users.append(userID)
   if user not in users:
+    print("not in db")
     cmd = 'INSERT INTO users VALUES (:user1)'
     g.conn.execute(text(cmd), user1 = user)
 
 
   today = date.today()
   print("Today's date:", today)
-
-  
-
-  # check if user is already in the database
 
   placeID = request.form['placeID']
   # should not need to be error checked bc of the drop down 
