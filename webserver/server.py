@@ -137,7 +137,6 @@ def another():
 # Example of adding new data to the database
 @app.route('/add', methods=['POST'])
 def add():
-  user = request.form['user']
   today = date.today()
   print("Today's date:", today)
   name = request.form['name']
