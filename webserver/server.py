@@ -100,7 +100,7 @@ def addPage():
   places = []
   for place in placeList:
     places.append(place)
-  placeDict = dict(places = places)
+  placeDict = dict(data = places)
   
   print(userID_)
   if userIDdict.get('userID') == -1:
