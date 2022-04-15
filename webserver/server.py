@@ -133,7 +133,7 @@ def view_name(id = None):
   hoursDict = dict(hoursList = hours)
   operatingHours.close()
 
-  menuInfo = ("""
+  menuInfo = g.conn.execute("""
     WITH newTable AS(
     select contain.placeID, contain.menuID, item.itemID, item.cost, item.name
     from contain JOIN item 
@@ -238,14 +238,3 @@ if __name__ == "__main__":
   run()
 
 
-
-'''
-<div>
-        Hours:
-        {% for day, start, end in hoursList}
-        <div>
-            {{day}}: {{start}} - {{start}}
-        </div>
-        {% endfor %}
-    </div>
-    '''
