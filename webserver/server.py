@@ -189,8 +189,9 @@ def add():
   waitTime = request.form['waitTime']
   cover = request.form['cover']
   minSpend = request.form['minSpend']
+  group = request.form['group']
   
-  if not (waitTime.isnumeric() or cover.isnumeric() or minSpend.isnumeric()):
+  if not (waitTime.isnumeric() or cover.isnumeric() or minSpend.isnumeric() or group.isnumeric()):
     return redirect('/form')
 
   capacity = request.form['capacity']
@@ -201,8 +202,7 @@ def add():
     return redirect('/form')
   ageRange = ageMin + "-" + ageMax
   
-
-  group = request.form['group']
+  
 
   print(placeID, waitTime, cover, minSpend, capacity, ageRange, group)
 
