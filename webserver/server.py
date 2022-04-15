@@ -166,7 +166,7 @@ def add():
   ageMin = request.form['ageMin'] # this is a string
   ageMax = request.form['ageMax'] # this is a string
 
-  if int(ageMin) < int(ageMax):
+  if int(ageMin) > int(ageMax):
     return redirect('/form')
   
 
