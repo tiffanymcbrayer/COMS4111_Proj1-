@@ -348,6 +348,7 @@ def add():
   """
   compares = []
   for result in formList:
+    print(result)
     compares.append([result[0], result[1], result[2]])
   currForm = [int(user), int(placeID), str(day)]
   print(compares)
