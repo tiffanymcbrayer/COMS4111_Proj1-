@@ -140,7 +140,6 @@ def events(id = None):
   eventDict = dict(event = entry)
   eventInfo.close()
 
-  # eventid	placeid	placename	name	description	numberattendees	address
 
   return render_template('event.html', **eventDict)
     
