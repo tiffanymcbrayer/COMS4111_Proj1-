@@ -22,7 +22,7 @@ app = Flask(__name__, template_folder=tmpl_dir)
 
 DB_USER = "ttm2126"
 DB_PASSWORD = "cocoa?"
-DB_SERVER = "w4111project1part2db.cisxo09blonu.us-east-1.rds.amazonaws.com"
+DB_SERVER = "w4111.cisxo09blonu.us-east-1.rds.amazonaws.com"
 
 DATABASEURI = "postgresql://"+DB_USER+":"+DB_PASSWORD+"@"+DB_SERVER+"/proj1part2"
 
@@ -179,6 +179,24 @@ def view_name(id = None):
   for waittime, cover, minspend, capacity, groupSize in reviewInfo:
     entry = [int(waittime), int(cover), int(minspend), int(capacity), int(groupSize)]
   reviewDict = dict(review = entry)
+
+
+  # EVENT INFO 
+  cmd2 = """
+    WITH temp AS(
+      SELECT hold.eventid,	hold.placeid, event.name, event.description, event.numberattendees
+      FROM hold join event
+      on hold.eventID = event.eventID
+    )
+
+    select temp.eventid,	temp.placeid, temp.name, temp.description, temp.numberattendees, has.address
+    from temp join has
+    on temp.placeid = has.placeid and temp.placeID = (:id1)
+  """
+  eventInfo = g.conn.execute(text(cmd2), id1 = id)
+  for result in eventInfo:
+    print(result)
+
   return render_template('view.html', **coll, **hoursDict, **menusDict, **reviewDict)
 
 
