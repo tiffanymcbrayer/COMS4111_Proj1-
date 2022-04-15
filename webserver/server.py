@@ -108,6 +108,8 @@ def addPage():
     
 @app.route('/view/<id>')
 def view_name(id = None):
+
+  # PLACE INFO 
   placeInfo = g.conn.execute("""
     select place.placeID, place.name, place.picture, has.address, location.neighborhood, location.closestSubway
     from place, has, location
@@ -121,6 +123,7 @@ def view_name(id = None):
 
   placeInfo.close()
 
+  # HOURS INFO 
   operatingHours = g.conn.execute("""
     select *
     from operating_open
@@ -133,6 +136,7 @@ def view_name(id = None):
   hoursDict = dict(hoursList = hours)
   operatingHours.close()
 
+  # MENU INFO
   menuInfo = g.conn.execute("""
     WITH newTable AS(
     select contain.placeID, contain.menuID, item.itemID, item.cost, item.name
@@ -160,17 +164,22 @@ def view_name(id = None):
         index  = countedMenu.index(result[5])
         entry = [result[4], result[3]] # name, cost 
         menus[index][1].append(entry)
-  print(menus)
       
   menusDict = dict(menuList = menus)
-  # [drinks,[item cost, item name, ]]
-
-  # placeid, menuid, itemid, cost, name, menuName
-
-
-
-
   menuInfo.close()
+
+  # REVIEWS INFO 
+
+  cmd = """ 
+    select AVG(form_review.wait) AS waitTime, AVG(form_review.cover) as Cover, AVG(form_review.minSpend) as minSpend, AVG(form_review.capacity) as Capacity, AVG(form_review.groupSize) as groupSize
+    from form_review natural join place
+    where placeID = (:id1)
+  """
+  reviewInfo = g.conn.execute(text(cmd), id1 = id)
+  for review in reviewInfo:
+    print(review)
+
+
   return render_template('view.html', **coll, **hoursDict, **menusDict)
 
 
