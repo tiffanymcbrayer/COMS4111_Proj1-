@@ -6,7 +6,7 @@
 <body style="background-color:rgb(245, 245, 235);"></body>
 <b>
     <div class = "container">
-        <div class = "row"></div>
+        <div class = "row">
             <div class = "col-md-6">
                 <div>
                     <!-- name -->
@@ -32,49 +32,52 @@
                         {{data[5]}} closest subway stop
                     </div>
                 </div>
-
-                <br>
-
-                <div>
-                    Hours:
-                    {% for day, start, end in hoursList%}
-                    <div>
-                        <small>
-                            {{day}}: {{start}} - {{start}}
-                        </small>
-                    </div>
-                    {% endfor %}
-                </div>
-                <br>
-                <div>
-                    <div>
-                        <b>Menus</b>
-                    </div>
-                    <div>
-                        {% for menu in menuList%}
-                        <div>
-                        {{menu[0]}}
-                        {% for name, cost in menu[1]%}
-                        <div>
-                            <small>
-                                {{name}} ${{cost}}
-                            </small>
-                        </div>
-                        {% endfor %}
-                    </div>
-                    {% endfor %}
-
-                    </div>
-                    
-
-                </div>
             </div>
             <div class = "col-md-6">
                 Reviews
                 <!-- waittime -->
                 waitTime: {{review[0]}}
+                <!-- cover -->
+                waitTime: {{review[1]}}
             </div>
         </div>
+
+        <br>
+
+        <div class = "row">
+            <div>
+                Hours:
+                {% for day, start, end in hoursList%}
+                <div>
+                    <small>
+                        {{day}}: {{start}} - {{start}}
+                    </small>
+                </div>
+                {% endfor %}
+            </div>
+            <br>
+            <div>
+                <div>
+                    <b>Menus</b>
+                </div>
+                <div>
+                    {% for menu in menuList%}
+                    <div>
+                    {{menu[0]}}
+                    {% for name, cost in menu[1]%}
+                    <div>
+                        <small>
+                            {{name}} ${{cost}}
+                        </small>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        
     </div>      
 
     
