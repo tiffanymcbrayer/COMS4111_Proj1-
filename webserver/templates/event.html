@@ -32,7 +32,7 @@
     </div>
     <div>
         <!-- date -->
-        Date? {{event[5]}}
+        Date: {{event[5]}}
     </div>
     <div>
         <!-- recur -->
@@ -50,6 +50,15 @@
         <!-- endtime -->
         End time: {{event[10]}}
     </div>
+
+    <form method="POST" action="/addAttend">
+        <p>
+            <div>
+                Add your userID if you are attending: <input type="text" min="0" name="user"> 
+            </div>
+            <input type="submit" value="Add">
+        </p>
+    </form>
 
 
 

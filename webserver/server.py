@@ -249,6 +249,21 @@ def view_name(id = None):
 def another():
   return render_template("welcome.html")
 
+@app.route('/addAttend', methods=['POST'])
+def addAttend():
+  user = request.form['user']
+  usersList = g.conn.execute("""
+    select *
+    from users
+  """)
+  users = []
+  for userID in usersList:
+    users.append(userID[0])
+  if int(user) not in users:
+    cmd = 'INSERT INTO users VALUES (:user1)'
+    g.conn.execute(text(cmd), user1 = user)
+  usersList.close()
+  return redirect('/')
 
 # Example of adding new data to the database
 @app.route('/add', methods=['POST'])
