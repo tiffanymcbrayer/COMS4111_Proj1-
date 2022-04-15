@@ -103,11 +103,10 @@ def addPage():
     places.append(entry)
   placeDict = dict(data = places)
   
-  print(userID_)
-  if userIDdict.get('userID') == -1:
-    return redirect('/login')
-  else:
-    return render_template('form.html', **userIDdict, **placeDict)
+  # print(userID_)
+  # if userIDdict.get('userID') == -1:
+  #   return redirect('/login')
+  return render_template('form.html', **userIDdict, **placeDict)
 
     
 @app.route('/view/<id>')
@@ -137,10 +136,25 @@ def another():
 # Example of adding new data to the database
 @app.route('/add', methods=['POST'])
 def add():
-  today = date.today()
-
-  print("Today's date:", today)
   user = request.form['user']
+
+  usersList = g.conn.execute("""
+    select *
+    from users
+  """)
+  users = []
+  for userID in usersList:
+    users.append(userID)
+  if user not in users:
+    cmd = 'INSERT INTO users VALUES (:user1)'
+    g.conn.execute(text(cmd), user1 = user)
+
+
+  today = date.today()
+  print("Today's date:", today)
+
+  
+
   # check if user is already in the database
 
   placeID = request.form['placeID']
@@ -156,7 +170,7 @@ def add():
   ageMax = request.form['ageMax'] # this is a string
 
   try:
-    int(ageMin)> int(ageMax)
+    int(ageMin) < int(ageMax)
   except:
     print("Wrong")
 
