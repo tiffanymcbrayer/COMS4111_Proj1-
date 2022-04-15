@@ -12,7 +12,7 @@
     <form method="POST" action="/add">
         <p>
             <div>
-                UserID: <input type="text" name="user"> 
+                UserID: <input type="text" min="0" name="user"> 
             </div>
             
             <div>           
@@ -23,13 +23,13 @@
                 </select>
             </div>
             <div>
-                Wait time: <input type="number" name="waitTime"> 
+                Wait time: <input type="number" min="0" name="waitTime"> 
             </div>
             <div>
-                Cover: <input type="number" name="cover"> 
+                Cover: <input type="number" min="0" name="cover"> 
             </div>
             <div>
-                Min spend: <input type="number" name="minSpend"> 
+                Min spend: <input type="number" min="0" name="minSpend"> 
             </div>
             <div>
                 Capacity: 
@@ -63,7 +63,7 @@
                 </select>
             </div>
             <div>
-                Group size : <input type="number" name="group"> 
+                Group size : <input type="number" min="0" name="group"> 
             </div>
             <input type="submit" value="Add">
         </p>
