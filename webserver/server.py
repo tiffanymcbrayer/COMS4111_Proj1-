@@ -105,10 +105,37 @@ def addPage():
   placeList.close()
   return render_template('form.html', **userIDdict, **placeDict)
 
+
+
+
 @app.route('/event/<id>')
 def events(id = None):
-  return render_template('event.html')
+  # EVENT INFO 
+  cmd2 = """
+    WITH temp AS(
+      SELECT hold.eventid,	hold.placeid, event.name, event.description, event.numberattendees
+      FROM hold join event
+      on hold.eventID = event.eventID
+    )
+
+    select temp.eventid,	temp.placeid, temp.name, temp.description, temp.numberattendees, has.address
+    from temp join has
+    on temp.placeid = has.placeid and temp.placeID = (:id1)
+  """
+  eventInfo = g.conn.execute(text(cmd2), id1 = id)
+
+  for eventid, placeid, name, description, numberattendees, address in eventInfo:
+    entry = [placeid, name, description, numberattendees, address]
+  eventDict = dict(event = entry)
+  eventInfo.close()
+
+  # eventid	placeid	name	description	numberattendees	address
+
+  return render_template('event.html', **eventDict)
     
+
+
+
 @app.route('/view/<id>')
 def view_name(id = None):
 
@@ -182,7 +209,7 @@ def view_name(id = None):
   for waittime, cover, minspend, capacity, groupSize in reviewInfo:
     entry = [int(waittime), int(cover), int(minspend), int(capacity), int(groupSize)]
   reviewDict = dict(review = entry)
-
+  reviewInfo.close()
 
   # EVENT INFO 
   cmd2 = """
@@ -201,6 +228,7 @@ def view_name(id = None):
   for result in eventInfo:
     eventList.append([result[0],result[2]]) # just appending the name, will create the hyperlink after
   eventDict = dict(events = eventList)
+  eventInfo.close()
   return render_template('view.html', **coll, **hoursDict, **menusDict, **reviewDict, **eventDict)
 
 
