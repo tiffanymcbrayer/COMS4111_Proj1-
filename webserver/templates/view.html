@@ -32,7 +32,9 @@
         Hours:
         {% for day, start, end in hoursList%}
         <div>
-            {{day}}: {{start}} - {{start}}
+            <small>
+                {{day}}: {{start}} - {{start}}
+            </small>
         </div>
         {% endfor %}
     </div>
