@@ -5,79 +5,73 @@
 <body></body>
 
 <div class = "container">
-    <div class = 'row'>
-        <div class="col-md-6">
-            <div>Name of place</div>
-            <input id="name" placeholder="Name" class="form-control">
-            <div id="nameInvalid" class = "invalid">
+    <div>
+        Fill out a form about a place you are at!
+    </div>
+
+    <form method="POST" action="/add">
+        <p>
+            <div>
+                UserID: <input type="text" name="user"> 
             </div>
+            
+            <div>           
+                Name: <select name="placeID">
+                {% for placeId,name in data %}  
+                    <option value={{placeId}}>{{name}}</option>
+                {% endfor %}  
+                </select>
+            </div>
+            <div>
+                Wait time: <input type="number" name="waitTime"> 
+            </div>
+            <div>
+                Cover: <input type="number" name="cover"> 
+            </div>
+            <div>
+                Min spend: <input type="number" name="minSpend"> 
+            </div>
+            <div>
+                Capacity: 
+                <select name="capacity">
+                    <option value="0">0%</option>
+                    <option value="25">25%</option>
+                    <option value="50">50%</option>
+                    <option value="75">75%</option>
+                    <option value="100">100%</option>
+                </select>
+            </div>
+            <div>
+                Age Range: 
+                <select name="ageMin">
+                    <option value="21">21</option>
+                    <option value="25">25</option>
+                    <option value="30">30</option>
+                    <option value="35">35</option>
+                    <option value="40">40</option>
+                    <option value="50">50</option>
 
-            <form method="POST" action="/add">
-                <p>
-                    <div>
-                        <!-- UserID: {{userID}} -->
-                        UserID: <input type="text" name="user"> 
-                    </div>
-                    
-                    <div>           
-                        Name: <select name="placeID">
-                        {% for placeId,name in data %}  
-                            <option value={{placeId}}>{{name}}</option>
-                        {% endfor %}  
-                        </select>
-                    </div>
-                    <div>
-                        Wait time: <input type="number" name="waitTime"> 
-                    </div>
-                    <div>
-                        Cover: <input type="number" name="cover"> 
-                    </div>
-                    <div>
-                        Min spend: <input type="number" name="minSpend"> 
-                    </div>
-                    <div>
-                        Capacity: 
-                        <select name="capacity">
-                            <option value="0">0%</option>
-                            <option value="25">25%</option>
-                            <option value="50">50%</option>
-                            <option value="75">75%</option>
-                            <option value="100">100%</option>
-                        </select>
-                    </div>
-                    <div>
-                        Age Range: 
-                        <select name="ageMin">
-                            <option value="21">21</option>
-                            <option value="25">25</option>
-                            <option value="30">30</option>
-                            <option value="35">35</option>
-                            <option value="40">40</option>
-                            <option value="50">50</option>
-
-                        </select>
-                        to 
-                        <select name="ageMax">
-                            <option value="25">25</option>
-                            <option value="30">30</option>
-                            <option value="35">35</option>
-                            <option value="40">40</option>
-                            <option value="50">50</option>
-                            <option value="100">50+</option>
-                        </select>
-                    </div>
-                    <div>
-                        Group size : <input type="number" name="group"> 
-                    </div>
-                    <input type="submit" value="Add">
-                </p>
-            </form>
+                </select>
+                to 
+                <select name="ageMax">
+                    <option value="25">25</option>
+                    <option value="30">30</option>
+                    <option value="35">35</option>
+                    <option value="40">40</option>
+                    <option value="50">50</option>
+                    <option value="100">50+</option>
+                </select>
+            </div>
+            <div>
+                Group size : <input type="number" name="group"> 
+            </div>
+            <input type="submit" value="Add">
+        </p>
+    </form>
 
 
              
 
-        </div>
-    </div>
 </div>
 
 {% endblock %}
