@@ -155,6 +155,10 @@ def add():
   ageMin = request.form['ageMin'] # this is a string
   ageMax = request.form['ageMax'] # this is a string
 
+  try:
+    int(ageMin)> int(ageMax):
+  except:
+    print("Wrong")
   group = request.form['group']
 
   print(placeID, waitTime, cover, minSpend, capacity, ageMin, ageMax, group)
