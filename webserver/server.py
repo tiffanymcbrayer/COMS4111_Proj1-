@@ -148,7 +148,8 @@ def view_name(id = None):
   """)
   menus = []
   for result in menuInfo:
-    menus.append(result[0])
+    if result[0] == int(id):
+      menus.append(result[1])
   menusDict = dict(menuList = menus)
   # [drinks,[item cost, item name, ]]
 
