@@ -291,7 +291,8 @@ def addAttend():
     currAttendees = result[0]
   numberAttendees.close()
   print(currAttendees)
-  currAttendees += 1
+  if currEntry not in attendees:
+    currAttendees += 1
 
   cmd4 = '''
     UPDATE event 
