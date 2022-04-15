@@ -19,8 +19,13 @@
                         Name: <input type="text" name="user"> 
                     </div>
                     
-                    <div>                        
+                    <div>           
+                                  
                         Name: <input type="text" name="name">
+                        {% for place in data %}  
+                            {{place}}
+                            <!-- <option value="volvo">Volvo</option> -->
+                        {% endfor %}  
                         <!-- drop down  -->
                     </div>
                     <div>
