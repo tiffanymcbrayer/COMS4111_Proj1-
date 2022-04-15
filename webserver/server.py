@@ -23,7 +23,7 @@ app = Flask(__name__, template_folder=tmpl_dir)
 DB_USER = "ttm2126"
 DB_PASSWORD = "cocoa?"
 
-DB_SERVER = "w4111.cisxo09blonu.us-east-1.rds.amazonaws.com"
+DB_SERVER = "w4111project1part2db.cisxo09blonu.us-east-1.rds.amazonaws.com"
 
 DATABASEURI = "postgresql://"+DB_USER+":"+DB_PASSWORD+"@"+DB_SERVER+"/proj1part2"
 
@@ -132,9 +132,29 @@ def view_name(id = None):
       entry = [result[1], result[2], result[3]] # day, start. end 
       hours.append(entry)
   hoursDict = dict(hoursList = hours)
-
-
   operatingHours.close()
+
+  # menuInfo = ("""
+  #   WITH newTable AS(
+  #   select contain.placeID, contain.menuID, item.itemID, item.cost, item.name
+  #   from contain JOIN item 
+  #   on contain.itemID = item.itemID 
+  #   group by placeID, menuID, item.itemID, name, cost
+  #   )
+    
+  #   SELECT newTable.placeid, newTable.menuid, newTable.itemid, newTable.cost, newTable.name, has_menu.name as menuName
+  #   FROM newTable JOIN has_menu
+  #   ON newTable.menuID = has_menu.menuID
+  #   group by newTable.placeid, newTable.menuid, newTable.itemid, newTable.cost, newTable.name, has_menu.name
+  # """)
+  # menus = []
+  # # [drinks,[item cost, item name, ]]
+  # # u
+
+
+
+
+  # menuInfo.close()
   return render_template('view.html', **coll, **hoursDict)
 
 
