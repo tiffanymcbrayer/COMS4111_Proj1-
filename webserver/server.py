@@ -286,9 +286,8 @@ def addAttend():
   """
   numberAttendees = g.conn.execute(text(cmd3),  eventID1 = eventID)
   print("number")
-  print(numberAttendees)
-  # for result in numberAttendees:
-  #   print(result)
+  for result in numberAttendees:
+    print(result)
   numberAttendees.close()
 
 
