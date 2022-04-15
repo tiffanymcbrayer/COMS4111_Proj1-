@@ -148,8 +148,8 @@ def add():
   print(users)
   if user not in users:
     print("not in db")
-    cmd = 'INSERT INTO users VALUES (:user1)'
-    g.conn.execute(text(cmd), user1 = user)
+    # cmd = 'INSERT INTO users VALUES (:user1)'
+    # g.conn.execute(text(cmd), user1 = user)
 
 
   today = date.today()
@@ -167,10 +167,9 @@ def add():
   ageMin = request.form['ageMin'] # this is a string
   ageMax = request.form['ageMax'] # this is a string
 
-  try:
-    int(ageMin) < int(ageMax)
-  except:
-    print("Wrong")
+  if int(ageMin) < int(ageMax):
+    return redirect('/form')
+  
 
   group = request.form['group']
 
