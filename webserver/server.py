@@ -137,7 +137,7 @@ def events(id = None):
   eventInfo = g.conn.execute(text(cmd2), id1 = id)
 
   for eventid, placeid, placename, name, description, numberattendees, address, date, recur, allday, timerange, starttime, endtime in eventInfo:
-    entry = [placename, name, description, numberattendees, address, date, recur, allday, timerange, starttime, endtime]
+    entry = [placename, name, description, numberattendees, address, date, recur, allday, timerange, starttime, endtime, eventid]
   eventDict = dict(event = entry)
   eventInfo.close()
 
@@ -263,6 +263,11 @@ def addAttend():
     cmd = 'INSERT INTO users VALUES (:user1)'
     g.conn.execute(text(cmd), user1 = user)
   usersList.close()
+
+  eventID = request.form['eventID']
+  print(user = request.form['user'])
+
+
   return redirect('/')
 
 # Example of adding new data to the database
