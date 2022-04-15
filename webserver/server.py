@@ -105,7 +105,7 @@ def addPage():
   placeList.close()
   return render_template('form.html', **userIDdict, **placeDict)
 
-@app.route('/events/<id>')
+@app.route('/event/<id>')
 def events(id = None):
   return render_template('event.html')
     
@@ -199,7 +199,7 @@ def view_name(id = None):
   eventInfo = g.conn.execute(text(cmd2), id1 = id)
   eventList = []
   for result in eventInfo:
-    eventList.append(result[0],result[2]) # just appending the name, will create the hyperlink after
+    eventList.append([result[0],result[2]]) # just appending the name, will create the hyperlink after
   eventDict = dict(events = eventList)
   return render_template('view.html', **coll, **hoursDict, **menusDict, **reviewDict, **eventDict)
 
