@@ -133,27 +133,27 @@ def view_name(id = None):
   hoursDict = dict(hoursList = hours)
   operatingHours.close()
 
-  # menuInfo = ("""
-  #   WITH newTable AS(
-  #   select contain.placeID, contain.menuID, item.itemID, item.cost, item.name
-  #   from contain JOIN item 
-  #   on contain.itemID = item.itemID 
-  #   group by placeID, menuID, item.itemID, name, cost
-  #   )
+  menuInfo = ("""
+    WITH newTable AS(
+    select contain.placeID, contain.menuID, item.itemID, item.cost, item.name
+    from contain JOIN item 
+    on contain.itemID = item.itemID 
+    group by placeID, menuID, item.itemID, name, cost
+    )
     
-  #   SELECT newTable.placeid, newTable.menuid, newTable.itemid, newTable.cost, newTable.name, has_menu.name as menuName
-  #   FROM newTable JOIN has_menu
-  #   ON newTable.menuID = has_menu.menuID
-  #   group by newTable.placeid, newTable.menuid, newTable.itemid, newTable.cost, newTable.name, has_menu.name
-  # """)
-  # menus = []
-  # # [drinks,[item cost, item name, ]]
-  # # u
+    SELECT newTable.placeid, newTable.menuid, newTable.itemid, newTable.cost, newTable.name, has_menu.name as menuName
+    FROM newTable JOIN has_menu
+    ON newTable.menuID = has_menu.menuID
+    group by newTable.placeid, newTable.menuid, newTable.itemid, newTable.cost, newTable.name, has_menu.name
+  """)
+  menus = []
+  # [drinks,[item cost, item name, ]]
+  # u
 
 
 
 
-  # menuInfo.close()
+  menuInfo.close()
   return render_template('view.html', **coll, **hoursDict)
 
 
