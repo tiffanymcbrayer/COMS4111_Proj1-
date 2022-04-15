@@ -146,7 +146,7 @@ def add():
   for userID in usersList:
     users.append(userID[0])
   print(users)
-  if user not in users:
+  if int(user) not in users:
     print("not in db")
     # cmd = 'INSERT INTO users VALUES (:user1)'
     # g.conn.execute(text(cmd), user1 = user)
