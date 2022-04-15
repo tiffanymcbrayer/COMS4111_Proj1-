@@ -138,7 +138,6 @@ def events(id = None):
 
   for eventid, placeid, placename, name, description, numberattendees, address, date, recur, allday, timerange, starttime, endtime in eventInfo:
     entry = [placename, name, description, numberattendees, address, date, recur, allday, timerange, starttime, endtime, eventid]
-    print(eventid)
   eventDict = dict(event = entry)
   eventInfo.close()
 
@@ -266,7 +265,8 @@ def addAttend():
   usersList.close()
 
   eventID = request.form['eventID']
-  print(user = request.form['user'])
+  cmd2 = 'INSERT INTO attends VALUES ((:user1),(:eventID1))'
+  g.conn.execute(text(cmd2),  user1 = user, eventID1 = eventID)
 
 
   return redirect('/')
