@@ -295,7 +295,7 @@ def addAttend():
   cmd4 = '''
     UPDATE event 
     SET numberattendees = (:currAttendees1)
-    WHERE eventid = (:eventid1)
+    WHERE eventid = (:eventID1)
   '''
   g.conn.execute(text(cmd4), currAttendees1 = currAttendees, eventID1 = eventID)
 
