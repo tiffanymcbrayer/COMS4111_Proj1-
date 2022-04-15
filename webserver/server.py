@@ -183,17 +183,17 @@ def add():
 def login():
     return render_template('login.html', **userIDdict)
 
-@app.route('/addLogin', methods=['POST'])
-def addLogin():
+# @app.route('/addLogin', methods=['POST'])
+# def addLogin():
 
-  ## check here if the userID exists, if yes then dont add to the db if no then add the userID to the database
-  user = request.form['user']
-  userIDdict['userID'] = user
+#   ## check here if the userID exists, if yes then dont add to the db if no then add the userID to the database
+#   user = request.form['user']
+#   userIDdict['userID'] = user
 
-  print(user)
-  cmd = 'INSERT INTO users VALUES (:user1)'
-  g.conn.execute(text(cmd), user1 = user)
-  return redirect('/form')
+#   print(user)
+#   cmd = 'INSERT INTO users VALUES (:user1)'
+#   g.conn.execute(text(cmd), user1 = user)
+#   return redirect('/form')
 
 
 if __name__ == "__main__":
