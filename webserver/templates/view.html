@@ -36,20 +36,28 @@
         </div>
         {% endfor %}
     </div>
+    <br>
     <div>
-        Menus
-        {% for menu in menuList%}
         <div>
+            <b>Menus</b>
+        </div>
+        <div>
+            {% for menu in menuList%}
+            <div>
             menu name:
             {{menu[0]}}
             {% for name, cost in menu[1]%}
             <div>
-                {{name}}
-                {{cost}}
+                <small>
+                    {{name}} ${{cost}}
+                </small>
             </div>
             {% endfor %}
         </div>
         {% endfor %}
+
+        </div>
+        
 
     </div>
 
