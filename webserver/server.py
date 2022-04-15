@@ -275,11 +275,9 @@ def addAttend():
   print(attendees)
   currEntry = [int(user), int(eventID)]
   print(currEntry)
-  if currEntry in attendees:
-    print("yes")
-
-  # cmd2 = 'INSERT INTO attends VALUES ((:user1),(:eventID1))'
-  # g.conn.execute(text(cmd2),  user1 = user, eventID1 = eventID)
+  if currEntry not in attendees:
+    cmd2 = 'INSERT INTO attends VALUES ((:user1),(:eventID1))'
+    g.conn.execute(text(cmd2),  user1 = user, eventID1 = eventID)
 
 
   return redirect('/')
