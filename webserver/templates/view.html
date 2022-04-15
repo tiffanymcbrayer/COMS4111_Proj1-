@@ -40,8 +40,9 @@
         Menus
         {% for menu in menuList%}
         <div>
-            {% for name in menu%}
+            {% for name, itemList in menu%}
             {{name}}
+            {{itemList}}
             {% endfor %}
         </div>
         {% endfor %}
