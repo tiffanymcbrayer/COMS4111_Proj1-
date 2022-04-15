@@ -145,7 +145,6 @@ def add():
   users = []
   for userID in usersList:
     users.append(userID[0])
-  print(users)
   if int(user) not in users:
     cmd = 'INSERT INTO users VALUES (:user1)'
     g.conn.execute(text(cmd), user1 = user)
@@ -169,10 +168,12 @@ def add():
   if int(ageMin) > int(ageMax):
     return redirect('/form')
   
+  ageRange = ageMin + "-" + ageMax
+  
 
   group = request.form['group']
 
-  print(placeID, waitTime, cover, minSpend, capacity, ageMin, ageMax, group)
+  print(placeID, waitTime, cover, minSpend, capacity, ageRange, group)
 
 
   return redirect('/')
