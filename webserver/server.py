@@ -221,6 +221,7 @@ def view_name(id = None):
   reviewDict = dict(review = entry)
   reviewInfo.close()
 
+  print(id)
   # EVENT INFO 
   cmd2 = """
     WITH temp AS(
