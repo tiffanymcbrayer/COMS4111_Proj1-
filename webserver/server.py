@@ -238,6 +238,7 @@ def view_name(id = None):
   for result in eventInfo:
     eventList.append([result[0],result[2]]) # just appending the name, will create the hyperlink after
   eventDict = dict(events = eventList)
+  print(eventDict)
   eventInfo.close()
   return render_template('view.html', **coll, **hoursDict, **menusDict, **reviewDict, **eventDict)
 
