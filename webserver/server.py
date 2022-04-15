@@ -342,14 +342,14 @@ def add():
   ageRange = ageMin + "-" + ageMax
   print(placeID, waitTime, cover, minSpend, capacity, ageRange, group)
 
-  formList = """
+  formList = g.conn.execute("""
     select userid,	placeid,	day
     from form_review
-  """
+  """)
   compares = []
   for result in formList:
     print(result)
-    #compares.append([result[0], result[1], result[2]])
+    compares.append([result[0], result[1], result[2]])
   currForm = [int(user), int(placeID), str(day)]
   print(compares)
   print(currForm)
