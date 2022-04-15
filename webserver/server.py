@@ -279,14 +279,14 @@ def addAttend():
     cmd2 = 'INSERT INTO attends VALUES ((:user1),(:eventID1))'
     g.conn.execute(text(cmd2),  user1 = user, eventID1 = eventID)
   
-  cmd3 = """
-    select numberattendees
-    from event
-    where eventid = (:eventID1)
-  """
-  numberAttendees = g.conn.execute(text(cmd2),  user1 = user, eventID1 = eventID)
-  print(numberAttendees)
-  numberAttendees.close()
+  # cmd3 = """
+  #   select numberattendees
+  #   from event
+  #   where eventid = (:eventID1)
+  # """
+  # numberAttendees = g.conn.execute(text(cmd2),  user1 = user, eventID1 = eventID)
+  # print(numberAttendees)
+  # numberAttendees.close()
 
 
   return redirect('/')
