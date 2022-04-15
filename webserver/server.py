@@ -273,7 +273,7 @@ def addAttend():
   for result in attendeesList:
     attendees.append([result[0], result[1]])
   print(attendees)
-  currEntry = [user, eventID]
+  currEntry = [int(user), int(eventID)]
   print(currEntry)
   if currEntry in attendees:
     print("yes")
