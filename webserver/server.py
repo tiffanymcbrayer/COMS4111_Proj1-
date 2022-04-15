@@ -94,12 +94,12 @@ def index():
 @app.route('/form')
 def addPage():
   placeList = g.conn.execute("""
-    select name
+    select *
     from place
   """)
   places = []
   for place in placeList:
-    places.append(place)
+    places.append(place[1])
   placeDict = dict(data = places)
   
   print(userID_)

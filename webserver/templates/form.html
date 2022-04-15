@@ -16,23 +16,18 @@
                 <p>
                     <div>
                         <!-- UserID: {{userID}} -->
-                        Name: <input type="text" name="user"> 
+                        UserID: <input type="text" name="user"> 
                     </div>
                     
                     <div>           
                                   
                         
-                        <select id="cars" name="cars">
-                            <option value="volvo">Volvo</option>
-                            <option value="saab">Saab</option>
-                            <option value="fiat">Fiat</option>
-                            <option value="audi">Audi</option>
-                        </select>
-                        Name: <input type="text" name="name">
+                        
+                        Name: <select name="name">
                         {% for place in data %}  
-                            
                             <option value={{place}}>{{place}}</option>
                         {% endfor %}  
+                        </select>
                         <!-- drop down  -->
                     </div>
                     <div>
