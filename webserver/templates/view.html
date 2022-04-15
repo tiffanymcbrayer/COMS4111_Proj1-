@@ -42,9 +42,10 @@
         <div>
             menu name:
             {{menu[0]}}
-            {% for name in menu[1]%}
+            {% for name, cost in menu[1]%}
             <div>
                 {{name}}
+                {{cost}}
             </div>
             {% endfor %}
         </div>
