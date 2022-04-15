@@ -94,7 +94,7 @@ def index():
 @app.route('/form')
 def addPage():
   placeList = g.conn.execute("""
-    select *
+    select name
     from place
   """)
   places = []
