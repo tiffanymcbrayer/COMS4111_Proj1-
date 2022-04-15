@@ -287,8 +287,17 @@ def addAttend():
   numberAttendees = g.conn.execute(text(cmd3),  eventID1 = eventID)
   print("number")
   for result in numberAttendees:
-    print(result)
+    currAttendees = result[0]
   numberAttendees.close()
+  print(currAttendees)
+  currAttendees += 1
+
+  cmd4 = '''
+    UPDATE event 
+    SET numberattendees = (:currAttendees1)
+    WHERE eventid = (:eventid1)
+  '''
+  g.conn.execute(text(cmd4), currAttendees1 = currAttendees, eventID1 = eventID)
 
 
   return redirect('/')
